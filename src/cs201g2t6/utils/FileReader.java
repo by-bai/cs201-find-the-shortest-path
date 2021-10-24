@@ -5,10 +5,7 @@ import java.util.*;
 import cs201g2t6.model.Business;
 
 public class FileReader {
-    public FileReader() {
- 
-    }
-
+  
     public static List<Business> readFile(String filename) throws FileNotFoundException {
 
         List<Business> businessList = new ArrayList<>();

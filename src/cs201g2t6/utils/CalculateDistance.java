@@ -1,11 +1,11 @@
 package cs201g2t6.utils;
 
-/** Haversine formula */
 public class CalculateDistance {
+
     public final static double AVERAGE_RADIUS_OF_EARTH_KM = 6371;
 
-    public static double calculateDistanceInKilometer(double userLat, double userLng, 
-    double venueLat, double venueLng) {
+    /** Haversine formula */
+    public static double calculateDistanceInKilometer(double userLat, double userLng, double venueLat, double venueLng) {
 
         double latDistance = Math.toRadians(userLat - venueLat);
         double lngDistance = Math.toRadians(userLng - venueLng);

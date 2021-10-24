@@ -1,16 +1,11 @@
 package cs201g2t6.utils;
 
-import java.io.*;
 import java.util.*; 
 import cs201g2t6.model.Business;
 
 public class FilterBusinesses {
 
-    public FilterBusinesses() {
-
-    }
-
-    /* Returns a list of businesses within a certain distance from user's location */
+    /* Returns a list of businesses within a maxDistance from user's location */
      public static List<Business> getBusinessesNearby(List<Business> businessList, Double[] userLocation, double maxDistance) {
         List<Double> distanceList = new ArrayList<>();
         List<Business> nearbyBusinessList = new ArrayList<>(); 
@@ -49,13 +44,11 @@ public class FilterBusinesses {
             }
         }
 
-        //System.out.println(restaurantsList);
-
         return restaurantsList;
 
     }
 
-    /* Returns a list of businesses (restaurants) with stars > 4.0 */
+    /* Returns a list of businesses (restaurants) with stars >= minRating */
     public static List<Business> getHighestRatedRestaurants(List<Business> businessList, double minRating) {
 
         List<Business> highestRatedList = new ArrayList<>();
