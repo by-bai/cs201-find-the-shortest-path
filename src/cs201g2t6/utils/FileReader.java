@@ -28,22 +28,6 @@ public class FileReader {
                  Business business = new Business(id, name, latitude, longitude, categoriesList, stars);
                  businessList.add(business); 
 
-                
-
-
-                //Boolean imported = false;
-
-                // for (int i = 1; i < line.length - 2; i++ ){
-                //     if (i == 1) {
-                //         name += line[i];
-                //     } else {
-                //         name += " " + line[i];
-                //     }
-
-                // }
-                // Item item = new Item(name, quantity, basePrice);
-                // itemList.add(item);
-
             }
 
         return businessList;
