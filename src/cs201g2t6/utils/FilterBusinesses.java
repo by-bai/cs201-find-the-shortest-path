@@ -26,7 +26,8 @@ public class FilterBusinesses {
 
         }
         
-        System.out.println(distanceList); // for testing only
+        //System.out.println(distanceList); // for testing only
+        // System.out.println(nearbyBusinessList);
         return nearbyBusinessList; 
 
 
