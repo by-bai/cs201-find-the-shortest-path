@@ -18,7 +18,7 @@ public class FilterBusinesses {
                                                         business.getLatitude(), 
                                                         business.getLongitude());
 
-            if (distanceBetweenLocations < maxDistance) {
+            if ((distanceBetweenLocations < maxDistance) && business.getStars() >= 4.0) {
                 distanceList.add(distanceBetweenLocations);
                 nearbyBusinessList.add(business); 
             }
