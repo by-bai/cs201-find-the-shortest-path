@@ -33,11 +33,11 @@ public class Graph2 {
         /*
         let's say your biz list has businesses A B C D E 
         so your adj matrix will look like this
-        A B C D E
+     A B C D E
     A
     B
-    C 
-    D
+    C      x
+    D    x
     E
 
     if C has index 2 in biz list, it will be in row 2 or column two . 

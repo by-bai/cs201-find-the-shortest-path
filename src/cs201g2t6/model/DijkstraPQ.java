@@ -55,11 +55,7 @@ public class DijkstraPQ {
         boolean set= true;
         
         while(set){
-            System.out.println(minPQ.peek().getBiz() + "before removal");
             priQueue smallestEntry = minPQ.poll(); // removes lowest
-
-            System.out.println("what im removing" + smallestEntry.getBiz());
-            System.err.println(minPQ.peek() + "after removal head");
             visited.add(smallestEntry.getBiz());
             Business newSmallestBiz = smallestEntry.getBiz();
             List <Business> neighboursOfOneBiz = graph.getNeighboursOfBusiness(newSmallestBiz);
@@ -87,7 +83,7 @@ public class DijkstraPQ {
                     // check if neighbour - lastElement in visited + lastElement in visited - user ( in total cost)
                     // is greater than neighbour -user as already written in total costs 
                     if ((check == 1 && (distance < totalCosts.get(bizNeighbour))) || check == 0) {
-                        priQueue entry = new priQueue(lastElement, distance);
+                        priQueue entry = new priQueue(bizNeighbour, distance);
                         // add entry to priority queue
                         minPQ.add(entry);
                         // add entry to total costs
@@ -120,7 +116,7 @@ public class DijkstraPQ {
                 List<String> categories = nearbyBusinessList.get(i).getCategories();
 
                 for (int j = 0; j <= categories.size() - 1; j++) {
-                    if (categories.get(j).equals("Restaurants")) {
+                    if (categories.get(j).equals(" Restaurants")) {
                         check = 1;
                         break;
                     }
