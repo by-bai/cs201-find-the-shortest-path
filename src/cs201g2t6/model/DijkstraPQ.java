@@ -46,6 +46,7 @@ public class DijkstraPQ {
         // add userlocation into the minimum priority queue
         priQueue entry = new priQueue(userLocation, 0.0); 
         minPQ.add(entry); 
+        int testBreakpoint = 0;
 
     }
 
@@ -110,43 +111,63 @@ public class DijkstraPQ {
             }
             
         }
+        // checkRest checks if biz is restaurant
+        int checkRest = 0; 
         int check = 0;
-            int i = 0;
-            for (i = 0; i <= nearbyBusinessList.size() - 1; i++) {
-                List<String> categories = nearbyBusinessList.get(i).getCategories();
-
-                for (int j = 0; j <= categories.size() - 1; j++) {
-                    if (categories.get(j).equals(" Restaurants")) {
-                        check = 1;
+        int i = 0;
+        // checkFirst checks if its the first time looping through the hashmap
+        int checkFirst = 0; 
+        double smallestDistance = 0.0; 
+        Business closestPlace = null; 
+        Iterator totalCostIterator = totalCosts.entrySet().iterator();
+            // find closest restaurant by going through totalCosts
+        while(totalCostIterator.hasNext()){
+            Map.Entry<Business,Double> mapElement = (Map.Entry)totalCostIterator.next();
+            Business potentialRest = mapElement.getKey();
+            // check if business is restaurant
+            if(potentialRest.getCategories() != null){
+                for (int j = 0; j <= potentialRest.getCategories().size() - 1; j++) {
+                    if (potentialRest.getCategories().get(j).equals(" Restaurants")) {
+                        checkRest = 1;
                         break;
                     }
 
                 }
-                if (check == 1) {
-                    break;
+                // if first round of looping through
+                if ((checkFirst == 0) && (checkRest == 1)) {
+                    closestPlace = mapElement.getKey();
+                    smallestDistance = mapElement.getValue();
+                    // not first time loooping through but biz is a restaurant
+                } else if (checkRest == 1) {
+                    if (smallestDistance > mapElement.getValue()) {
+                        closestPlace = mapElement.getKey();
+                        smallestDistance = mapElement.getValue();
+
+                    }
                 }
 
             }
-            String output = "";
-            Business chosenBiz = null;
-            if (check == 1) {
-                chosenBiz = nearbyBusinessList.get(i);
-                Business endpoint = prevBusiness.get(chosenBiz);
-                output = chosenBiz.getName();
-                System.out.println(chosenBiz.getName());
-                System.out.println(endpoint.getName());
-                while(endpoint != userLocation){
-                    output = endpoint.getName() + "->" + output;
-                    endpoint = prevBusiness.get(endpoint);
-                // 1 -> 2 -> 3 -> 4
-                }
-                System.out.println("User Location -> " + output);
-                System.out.println("Facts about the biz:");
-                System.out.println("Ratings in stars" + chosenBiz.getStars());
-                System.out.println(chosenBiz.getCategories().toString());
             
+            //set checkRest back to 0 so can check if next biz is restaurant
+            checkRest = 0; 
 
-            }
+        }
+        String output = "";
+        Business chosenBiz = null;
+        chosenBiz = nearbyBusinessList.get(i);
+        Business endpoint = prevBusiness.get(chosenBiz);
+        output = chosenBiz.getName();
+        // System.out.println(chosenBiz.getName());
+        // System.out.println(endpoint.getName());
+        while (endpoint != userLocation) {
+            output = endpoint.getName() + "->" + output;
+            endpoint = prevBusiness.get(endpoint);
+            // 1 -> 2 -> 3 -> 4
+        }
+        System.out.println("User Location -> " + output);
+        System.out.println("Facts about the biz:");
+        System.out.println("Ratings in stars" + chosenBiz.getStars());
+        System.out.println(chosenBiz.getCategories().toString());
 
                 
             
