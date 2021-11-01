@@ -17,6 +17,9 @@ public class App {
 
         /** Find restaurants above this rating (inclusive) */ 
         double minRating = 4.0; 
+
+        /** Set distance for two businesses to be considered neighbours */
+        double neighbourDistance = 0.4;
         
         try {
             List<Business> allBusinessList = FileReader.readFile("data/business.csv");
@@ -32,7 +35,7 @@ public class App {
             // add user into biz list
             nearbyBusinessList.add(user); 
 
-            Graph2 graph = new Graph2(nearbyBusinessList.size(), nearbyBusinessList);
+            Graph2 graph = new Graph2(nearbyBusinessList.size(), nearbyBusinessList, neighbourDistance);
             // DijkstraPQ dijkstraPQ = new DijkstraPQ(graph, user); 
             // dijkstraPQ.doDijkstraPQ();
 
