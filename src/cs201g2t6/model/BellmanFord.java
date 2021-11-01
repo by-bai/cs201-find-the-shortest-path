@@ -9,6 +9,9 @@ public class BellmanFord {
     private Business userLocation;
     private List<Business> nearbyBusinessList;
     private int size;
+    private double[] costs; // to store distance vectors from source to node
+    private Business[] previous; // to store previous node in path
+
     
     public BellmanFord(Graph2 graph, Business userLocation) {
         // initialise all class variables
@@ -16,6 +19,8 @@ public class BellmanFord {
         this.userLocation = userLocation;
         nearbyBusinessList = graph.getBusinessList(); 
         size = nearbyBusinessList.size();
+        costs = new double[size];
+        previous = new Business[size];
     }
 
     public double calcDistance(Business a, Business b) {
@@ -36,9 +41,7 @@ public class BellmanFord {
     }
     
     public void doBellmanFord() {
-        double[] costs = new double[size]; // to store distance vectors from source to node
-        Business[] previous = new Business[size]; // to store previous node in path
-        double minCost = 1000.0; 
+        double minCost = 1000.0; // use 1000.0 to signify infinity
         int minIndex = -1; // index of shortest path vertex
 
         // initialise to all costs to 1000, which represents infinity
@@ -56,7 +59,6 @@ public class BellmanFord {
             costs[neighbourIndex] = calcDistance(userLocation, n);
             previous[neighbourIndex] = userLocation;
         }
-        System.out.println();
 
         // for each vertex in nearbyBusinessList
         for (int i = 0; i < size-1; i++) { 
@@ -64,12 +66,13 @@ public class BellmanFord {
             if (vertex.equals(userLocation)) {
                 break;
             }
+
             List<Business> neighbours = graph.getNeighboursOfBusiness(vertex);
 
             // for each edge of the current vertex
             for (Business n:neighbours) {
                 int neighbourIndex = nearbyBusinessList.indexOf(n);
-                // temp (cost of source to neighbour) = direct cost to vertex + cost of vertex to neighbour
+                // cost of source to neighbour = direct cost to vertex + cost of vertex to neighbour
                 double temp = costs[i] + calcDistance(vertex, n);
                 if (temp < costs[neighbourIndex]) {
                     costs[neighbourIndex] = temp;
