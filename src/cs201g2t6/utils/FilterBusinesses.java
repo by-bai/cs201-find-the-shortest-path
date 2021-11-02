@@ -6,7 +6,7 @@ import cs201g2t6.model.Business;
 public class FilterBusinesses {
 
     /* Returns a list of businesses within a maxDistance from user's location */
-     public static List<Business> getBusinessesNearby(List<Business> businessList, Double[] userLocation, double maxDistance) {
+     public static List<Business> getBusinessesNearby(List<Business> businessList, Double[] userLocation, double maxDistance, double minRating) {
         List<Double> distanceList = new ArrayList<>();
         List<Business> nearbyBusinessList = new ArrayList<>(); 
 
@@ -18,7 +18,7 @@ public class FilterBusinesses {
                                                         business.getLatitude(), 
                                                         business.getLongitude());
 
-            if ((distanceBetweenLocations < maxDistance) && business.getStars() >= 4.0) {
+            if ((distanceBetweenLocations < maxDistance) && business.getStars() >= minRating) {
                 distanceList.add(distanceBetweenLocations);
                 nearbyBusinessList.add(business); 
             }
