@@ -51,7 +51,6 @@ public class DijkstraPQ {
     }
 
     public void doDijkstraPQ(){
-        System.out.println( "size"+ nearbyBusinessList.size());
         int checker = 1;
         boolean set= true;
         
@@ -152,38 +151,26 @@ public class DijkstraPQ {
             checkRest = 0; 
 
         }
-        String output = "";
-        Business chosenBiz = null;
-        chosenBiz = nearbyBusinessList.get(i);
+        String output = ":";
+        Business chosenBiz = closestPlace;
         Business endpoint = prevBusiness.get(chosenBiz);
-        output = chosenBiz.getName();
-        // System.out.println(chosenBiz.getName());
-        // System.out.println(endpoint.getName());
+        System.out.println(endpoint);
+        output = closestPlace.getName();
+
+
         while (endpoint != userLocation) {
             output = endpoint.getName() + "->" + output;
             endpoint = prevBusiness.get(endpoint);
+            if (endpoint == userLocation) {
+                break;
+            }
             // 1 -> 2 -> 3 -> 4
+            int donkey = 1;
         }
         System.out.println("User Location -> " + output);
         System.out.println("Facts about the biz:");
         System.out.println("Ratings in stars" + chosenBiz.getStars());
-        System.out.println(chosenBiz.getCategories().toString());
 
-                
-            
-
-    }
-        
-        
+        System.out.println(chosenBiz.getCategories().toString());             
+    }     
 }
-
-        
-
-
-
-    
-
-
-
-    
-

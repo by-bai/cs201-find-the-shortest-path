@@ -2,7 +2,6 @@ package cs201g2t6.app;
 
 import cs201g2t6.utils.*;
 import cs201g2t6.model.*;
-
 import java.util.*;
 import java.io.FileNotFoundException;
 
@@ -22,10 +21,11 @@ public class App {
         double neighbourDistance = 0.4;
         
         try {
-            List<Business> allBusinessList = FileReader.readFile("data/business.csv");
+            List<Business> allBusinessList = FileReader.readFile("data/businesstest10.csv");
             List<Business> nearbyBusinessList = FilterBusinesses.getBusinessesNearby(allBusinessList, userLocation, maxDistance); 
             //List<Business> nearbyRestaurantsList = FilterBusinesses.getRestaurantsOnly(nearbyBusinessList); 
             //List<Business> nearbyHighestRatedRestaurantsList = FilterBusinesses.getHighestRatedRestaurants(nearbyRestaurantsList, minRating); 
+
             //System.out.println(nearbyHighestRatedRestaurantsList);
 
              // aks implementation

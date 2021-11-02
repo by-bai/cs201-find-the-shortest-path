@@ -89,5 +89,4 @@ public class Graph2 {
     public List<Business> getBusinessList() {
         return nearbyBusinessList;
     }
-
 }
