@@ -170,24 +170,7 @@ public class DijkstraPQ {
         System.out.println("User Location -> " + output);
         System.out.println("Facts about the biz:");
         System.out.println("Ratings in stars" + chosenBiz.getStars());
-        //System.out.println(chosenBiz.getCategories().toString());
-        
 
-                
-            
-
-    }
-        
-        
+        System.out.println(chosenBiz.getCategories().toString());             
+    }     
 }
-
-        
-
-
-
-    
-
-
-
-    
-

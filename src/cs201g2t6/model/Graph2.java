@@ -11,6 +11,7 @@ public class Graph2 {
 
     private int numOfNodes;
     private List<Business> nearbyBusinessList; 
+    private double neighbourDistance;
     // shows if two nodes are connected
     private int[][] adjMatrix; 
     // checks if two business are neighbouring/connected
@@ -19,9 +20,10 @@ public class Graph2 {
 //graph2 constructor
 
 // works
-    public Graph2(int numOfNodes, List<Business> nearbyBusinessList){
+    public Graph2(int numOfNodes, List<Business> nearbyBusinessList, double neighbourDistance){
         this.numOfNodes = numOfNodes;
         this.nearbyBusinessList = nearbyBusinessList;
+        this.neighbourDistance = neighbourDistance;
 
         // Initializes our adjacency matrix to the appropriate size
         // adjancency matrix has 1 if two biz is connected and 0 if not
@@ -53,19 +55,15 @@ public class Graph2 {
                 Double distance = CalculateDistance.calculateDistanceInKilometer(inQuestion.getLatitude(),
                         inQuestion.getLongitude(), compareBiz.getLatitude(), compareBiz.getLongitude());
                 // CAN CHANGE DISTANCE TO CHANGE INPUT SIZE TO EXPERIMENT
-                if(distance == 0 || distance > 0.4){
+                if(distance == 0 || distance > neighbourDistance){
                     adjMatrix[i][j] = 0;
                     isSetMatrix[i][j] = false;
                 }else{
                     adjMatrix[i][j] = 1;
                     isSetMatrix[i][j] = true;
                 }
-
             }
         }
-
-        
-
     }
 //works
     public List<Business> getNeighboursOfBusiness(Business E){
@@ -80,7 +78,6 @@ public class Graph2 {
 
     }
     
-    
     public int[][] getAdjMatrix(){
         return adjMatrix; 
     }
@@ -92,6 +89,4 @@ public class Graph2 {
     public List<Business> getBusinessList() {
         return nearbyBusinessList;
     }
-
-    
 }
