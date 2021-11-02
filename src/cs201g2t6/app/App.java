@@ -36,12 +36,22 @@ public class App {
             nearbyBusinessList.add(user); 
 
             Graph2 graph = new Graph2(nearbyBusinessList.size(), nearbyBusinessList, neighbourDistance);
-            // DijkstraPQ dijkstraPQ = new DijkstraPQ(graph, user); 
-            // dijkstraPQ.doDijkstraPQ();
+            
+            /*
+            // testing dijkstra
+            DijkstraPQ dijkstraPQ = new DijkstraPQ(graph, user); 
+            dijkstraPQ.doDijkstraPQ();
+            */
+
+            long startTime = System.currentTimeMillis();
 
             // testing bellman ford
             BellmanFord bellmanFord = new BellmanFord(graph, user);
             bellmanFord.doBellmanFord();
+
+            long endTime = System.currentTimeMillis();
+            long elapsed = endTime - startTime;
+            System.out.println("Time elapsed: " + elapsed);
             
         } catch (FileNotFoundException e) {
             System.out.println("File does not exist!"); 
