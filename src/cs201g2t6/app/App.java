@@ -9,7 +9,7 @@ public class App {
     public static void main(String[] args) {
 
         /** Enter x & y coordinates of your location */ 
-        Double[] userLocation = {45.5309581, -122.8237802};//{40.0175444, -105.28335}; 
+        Double[] userLocation = {40.0175444, -105.28335}; 
 
         /** Find restaurants within this distance */ 
         double maxDistance = 2.0; 
@@ -19,6 +19,11 @@ public class App {
 
         /** Set distance for two businesses to be considered neighbours */
         double neighbourDistance = 0.4;
+
+        /** Enter algorithm:
+         * 1 - Dijkstra with Priority Queue
+         * 2 - Bellman */ 
+        int algo = 2; 
         
         try {
             List<Business> allBusinessList = FileReader.readFile("data/businesstest10.csv");
@@ -28,26 +33,23 @@ public class App {
 
             //System.out.println(nearbyHighestRatedRestaurantsList);
 
-             // aks implementation
-
-            // MAKE USERLOCATION A BIZ SET EVERYTHING BUT LONG , LAT TO NULL 
+            // make user location a business
             Business user = new Business(null, "user", userLocation[0], userLocation[1], null, 0); 
-            // add user into biz list
+
+            // add user into business list
             nearbyBusinessList.add(user); 
 
             Graph2 graph = new Graph2(nearbyBusinessList.size(), nearbyBusinessList, neighbourDistance);
-            
-            /*
-            // testing dijkstra
-            DijkstraPQ dijkstraPQ = new DijkstraPQ(graph, user); 
-            dijkstraPQ.doDijkstraPQ();
-            */
 
             long startTime = System.currentTimeMillis();
 
-            // testing bellman ford
-            BellmanFord bellmanFord = new BellmanFord(graph, user);
-            bellmanFord.doBellmanFord();
+            if (algo == 1) {
+                DijkstraPQ dijkstraPQ = new DijkstraPQ(graph, user);    
+                dijkstraPQ.doDijkstraPQ();
+            } else if (algo == 2) {
+                BellmanFord bellmanFord = new BellmanFord(graph, user);
+                bellmanFord.doBellmanFord();
+            }
 
             long endTime = System.currentTimeMillis();
             long elapsed = endTime - startTime;
