@@ -40,7 +40,7 @@ public class FilterBusinesses {
         
         for (int i = 0; i < businessList.size(); i++) {
             Business business = businessList.get(i); 
-            if (business.getCategories().contains("Restaurants")) {
+            if (business.getCategories().contains("Restaurants") || business.getCategories().contains(" Restaurants")) {
                 restaurantsList.add(business); 
             }
         }
