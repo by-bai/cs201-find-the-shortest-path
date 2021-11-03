@@ -27,7 +27,7 @@ public class App {
          * 1 - Dijkstra with Priority Queue
          * 2 - Bellman 
          * 3 - Dijkstra with Adjacency List*/ 
-        int algo = 0; 
+        int algo = 2; 
         
         try {
             List<Business> allBusinessList = FileReader.readFile("data/business.csv");
@@ -48,15 +48,19 @@ public class App {
             long startTime = System.currentTimeMillis();
 
             if (algo == 0) {
+                System.out.println("Chosen Algorithm: (0) Brute Force");
                 BruteForce bruteForce = new BruteForce(graph, user);
                 bruteForce.doBruteForce();
             } else if (algo == 1) {
+                System.out.println("Chosen Algorithm: (1) Dijkstra Priority Queue");
                 DijkstraPQ dijkstraPQ = new DijkstraPQ(graph, user);    
                 dijkstraPQ.doDijkstraPQ();
             } else if (algo == 2) {
+                System.out.println("Chosen Algorithm: (2) Bellman Ford");
                 BellmanFord bellmanFord = new BellmanFord(graph, user);
                 bellmanFord.doBellmanFord();
             } else if (algo == 3) {
+                System.out.println("Chosen Algorithm: (3) Dijkstra Adjacency List");
                 // Dijkstra with Adjacency List //
                 ArrayList<Vertex> vertices = new ArrayList<>();
                 vertices.add(new Vertex(user));
