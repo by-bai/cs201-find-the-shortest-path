@@ -32,7 +32,10 @@ public class BellmanFord {
         if (categories == null) {
             return false;
         }
-        for (int i = 0; i < categories.size()-1; i++) {
+        for (int i = 0; i < categories.size(); i++) {
+            if (categories.get(i) == null) {
+                continue;
+            }
             if (categories.get(i).contains("Restaurants")) {
                 return true;
             }
