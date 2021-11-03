@@ -23,7 +23,8 @@ public class App {
         /** Enter algorithm:
          * 0 - BruteForce 
          * 1 - Dijkstra with Priority Queue
-         * 2 - Bellman */ 
+         * 2 - Bellman 
+         * 3 - Dijkstra with Adjacency List*/ 
         int algo = 3; 
         
         try {
