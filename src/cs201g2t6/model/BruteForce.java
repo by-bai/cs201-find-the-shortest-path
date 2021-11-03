@@ -17,10 +17,6 @@ public class BruteForce {
     }
 
     public void doBruteForce() {
-        String[] label = new String[size];
-        for(int i = 0; i < size; i++) {
-            label[i] =  nearbyBusinessList.get(i).getName();
-        }
 
         int[][] matrix = graph.getAdjMatrix();
 
@@ -56,7 +52,8 @@ public class BruteForce {
                         Node2 childNode = new Node2 (path, i);
                         if (i == end) {
                             System.out.print(((++solution) + "."));
-                            childNode.print(matrix,label);
+                            System.out.println("Path:");
+                            childNode.print(matrix,nearbyBusinessList);
                             double totalWeight = childNode.calculateWeight(matrix);
                             System.out.println("Total Weight: " + totalWeight);
                     
@@ -76,9 +73,21 @@ public class BruteForce {
             } 
             queue.poll();
         }
-        System.out.println("Shortest Path:");
-        nearestVertex.print(matrix,label);
+        
+        
+        System.out.print("The nearest restaurant to you is: ");
+        nearestVertex.printDestination(matrix, nearbyBusinessList);
+        System.out.print("Location: ");
+        nearestVertex.printLocation(matrix, nearbyBusinessList);
+        System.out.print("Categories: ");
+        nearestVertex.printCategories(matrix, nearbyBusinessList);
+        System.out.print("Stars: ");
+        nearestVertex.printStars(matrix, nearbyBusinessList);
         System.out.println("Total Weight: " + smallestCost);
+        // System.out.printf("Total distance: %.2f km\n", minCost);
+        System.out.print("Directions: ");
+        nearestVertex.print(matrix,nearbyBusinessList);
+        // System.out.println();
 
     }
     

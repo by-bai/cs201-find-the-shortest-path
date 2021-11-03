@@ -47,14 +47,47 @@ public class Node2 {
         return result;
     }
 
-    public void print(int[][] adj, String[] label) {
-        System.out.println("Path");
+    public void print(int[][] adj, List<Business> nearbyBusinessList) {
         if (path != null && path.size() > 0) {
-            System.out.print(label[path.get(0)]);
-            for (int i = 1; i < path.size(); i++ ) {
-                System.out.print(" <- " + label[path.get(i)]);
+            System.out.print(nearbyBusinessList.get(path.get(path.size() - 1)).getName());
+            for (int i = path.size() - 2; i >= 0; i-- ) {
+                System.out.print(" -> " + nearbyBusinessList.get(path.get(i)).getName());
             }
             System.out.println("");
+        } else {
+            System.out.println("NULL");
+        }
+    }
+
+    public void printDestination(int[][] adj, List<Business> nearbyBusinessList) {
+        if (path != null && path.size() > 0) {
+            System.out.println(nearbyBusinessList.get(path.get(0)).getName());
+        } else {
+            System.out.println("NULL");
+        }
+    }
+
+    public void printLocation(int[][] adj, List<Business> nearbyBusinessList) {
+        if (path != null && path.size() > 0) {
+            System.out.print(nearbyBusinessList.get(path.get(0)).getLatitude() + ", ");
+            System.out.println(nearbyBusinessList.get(path.get(0)).getLongitude());
+        } else {
+            System.out.println("NULL");
+        }
+    }
+
+    public void printCategories(int[][] adj, List<Business> nearbyBusinessList) {
+        if (path != null && path.size() > 0) {
+            System.out.println(nearbyBusinessList.get(path.get(0)).getCategories());
+            
+        } else {
+            System.out.println("NULL");
+        }
+    }
+
+    public void printStars(int[][] adj, List<Business> nearbyBusinessList) {
+        if (path != null && path.size() > 0) {
+            System.out.println(nearbyBusinessList.get(path.get(0)).getStars());
         } else {
             System.out.println("NULL");
         }
