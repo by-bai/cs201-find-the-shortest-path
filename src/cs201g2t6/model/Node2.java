@@ -47,12 +47,12 @@ public class Node2 {
         return result;
     }
 
-    public void print(int[][] adj, char[] label) {
+    public void print(int[][] adj, String[] label) {
         System.out.println("Path");
         if (path != null && path.size() > 0) {
             System.out.print(label[path.get(0)]);
             for (int i = 1; i < path.size(); i++ ) {
-                System.out.print("-" + label[path.get(i)]);
+                System.out.print(" <- " + label[path.get(i)]);
             }
             System.out.println("");
         } else {

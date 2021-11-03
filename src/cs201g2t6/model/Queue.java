@@ -1,6 +1,5 @@
 package cs201g2t6.model;
 
-import java.util.*;
 // Queue implemented by Linked Lists
 public class Queue<E> {
     private LinkedList<E> list = new LinkedList<>();

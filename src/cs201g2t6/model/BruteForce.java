@@ -17,21 +17,19 @@ public class BruteForce {
     }
 
     public void doBruteForce() {
-        char[] label = new char[size];
+        String[] label = new String[size];
         for(int i = 0; i < size; i++) {
-            int ascii = (int)'A';
-            ascii += i;
-            label[i] =  (char) ascii; 
+            label[i] =  nearbyBusinessList.get(i).getName();
         }
 
         int[][] matrix = graph.getAdjMatrix();
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j]);
-            }
-            System.out.println();
-        }
+        // for (int i = 0; i < matrix.length; i++) {
+        //     for (int j = 0; j < matrix[i].length; j++) {
+        //         System.out.print(matrix[i][j]);
+        //     }
+        //     System.out.println();
+        // }
 
         int start = 0;
         int end = size - 1;
