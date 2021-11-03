@@ -1,11 +1,11 @@
-## Finding the Shortest Path
+# Finding the Shortest Path
 Our application finds the shortest path to the closest restaurant in [Yelp's business dataset](https://www.yelp.com/dataset/documentation/main) given the user's location.
 
 Done by: Akshaya, Bai, Charlotte, Kylie, Viddya
 
 
 
-### Running our Application:
+## Running our Application:
 1. **Clone this repository:**
 ```
     git clone https://github.com/by-bai/cs201project.git
@@ -46,4 +46,12 @@ Done by: Akshaya, Bai, Charlotte, Kylie, Viddya
 
 6. **Sample output:**
 ![Sample Output](sampleoutput.png)
+
+7. **Modify Parameters:** <br />
+possible parameters to experiment with to obtain different results.
+
+- App.java:17 - **maxDistance**: find businesses within this distance from user's location
+- App.java:20 - **minRating**: find restaurant above this rating (inclusive)
+- App.java:23 - **neighbourDistance**: distance for 2 businesses to be connected in the graph
+
 
