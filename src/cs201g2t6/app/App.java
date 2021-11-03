@@ -21,9 +21,10 @@ public class App {
         double neighbourDistance = 0.4;
 
         /** Enter algorithm:
+         * 0 - BruteForce 
          * 1 - Dijkstra with Priority Queue
          * 2 - Bellman */ 
-        int algo = 2; 
+        int algo = 0; 
         
         try {
             List<Business> allBusinessList = FileReader.readFile("data/businesstest10.csv");
@@ -43,7 +44,10 @@ public class App {
 
             long startTime = System.currentTimeMillis();
 
-            if (algo == 1) {
+            if (algo == 0) {
+                BruteForce bruteForce = new BruteForce(graph, user);
+                bruteForce.doBruteForce();
+            } else if (algo == 1) {
                 DijkstraPQ dijkstraPQ = new DijkstraPQ(graph, user);    
                 dijkstraPQ.doDijkstraPQ();
             } else if (algo == 2) {
