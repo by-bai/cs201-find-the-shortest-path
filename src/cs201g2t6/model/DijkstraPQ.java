@@ -136,8 +136,9 @@ public class DijkstraPQ {
                 if ((checkFirst == 0) && (checkRest == 1)) {
                     closestPlace = mapElement.getKey();
                     smallestDistance = mapElement.getValue();
+                    checkFirst = 1;
                     // not first time loooping through but biz is a restaurant
-                } else if (checkRest == 1) {
+                } else if ((checkRest == 1) && (checkFirst == 1)) {
                     if (smallestDistance > mapElement.getValue()) {
                         closestPlace = mapElement.getKey();
                         smallestDistance = mapElement.getValue();
