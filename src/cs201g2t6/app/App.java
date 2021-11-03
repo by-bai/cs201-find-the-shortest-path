@@ -5,6 +5,8 @@ import cs201g2t6.model.*;
 import java.util.*;
 import java.io.FileNotFoundException;
 
+// A note: if output is null pointer/ no destination found , that means there's no nearby restaurant less than 0.4km in that particular datset.
+
 public class App {
     public static void main(String[] args) {
 
@@ -67,8 +69,8 @@ public class App {
                     for (int j = i + 1; j < vertices.size(); j++) {
                         double distance = CalculateDistance.calculateDistanceInKilometer(vertices.get(i).getBusiness().getLatitude(), vertices.get(i).getBusiness().getLongitude(),
                         vertices.get(j).getBusiness().getLatitude(), vertices.get(j).getBusiness().getLongitude());
-    
-                        if (distance <= 0.4) {
+   
+                        if (distance <= neighbourDistance) {
                             vertices.get(i).addAdjacentEdge(new Edge(vertices.get(i), vertices.get(j), distance));
                         }
                     }
