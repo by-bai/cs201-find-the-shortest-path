@@ -25,7 +25,7 @@ public class App {
          * 1 - Dijkstra with Priority Queue
          * 2 - Bellman 
          * 3 - Dijkstra with Adjacency List*/ 
-        int algo = 3; 
+        int algo = 0; 
         
         try {
             List<Business> allBusinessList = FileReader.readFile("data/business.csv");
@@ -98,12 +98,12 @@ public class App {
 
                 List<Vertex> path= dijkstra.shortestPath(vertices.get(0), vertices.get(index));
 
-                System.out.println("The nearest restaurant to you is : " + vertices.get(index).getBusiness().getName());
-                System.out.println("Location : " + vertices.get(index).getBusiness().getLatitude() + ", " + vertices.get(index).getBusiness().getLongitude());
-                System.out.println("Categories : " + vertices.get(index).getBusiness().getCategories());
-                System.out.println("Stars : " + vertices.get(index).getBusiness().getStars());
+                System.out.println("The nearest restaurant to you is: " + vertices.get(index).getBusiness().getName());
+                System.out.println("Location: " + vertices.get(index).getBusiness().getLatitude() + ", " + vertices.get(index).getBusiness().getLongitude());
+                System.out.println("Categories: " + vertices.get(index).getBusiness().getCategories());
+                System.out.println("Stars: " + vertices.get(index).getBusiness().getStars());
                 System.out.format("Total distance: %.2f km\n", vertices.get(index).getWeight());
-                System.out.println("Directions : " + path);
+                System.out.println("Directions: " + path);
                 System.out.println();
                 // END //
             }

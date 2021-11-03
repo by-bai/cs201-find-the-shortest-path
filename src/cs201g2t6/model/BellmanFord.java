@@ -123,7 +123,9 @@ public class BellmanFord {
         System.out.println("Location: " + destination.getLatitude() + ", " + destination.getLongitude());
         System.out.println("Categories: " + destination.getCategories());
         System.out.println("Stars: " +  destination.getStars());
+        System.out.printf("Total distance: %.2f km\n", minCost);
         System.out.println("Directions: " + path);
+        System.out.println();
 
         /*
         // pseudocode

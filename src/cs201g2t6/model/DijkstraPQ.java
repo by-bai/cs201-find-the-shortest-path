@@ -154,7 +154,7 @@ public class DijkstraPQ {
         String output = ":";
         Business chosenBiz = closestPlace;
         Business endpoint = prevBusiness.get(chosenBiz);
-        System.out.println(endpoint);
+        // System.out.println(endpoint);
         output = closestPlace.getName();
 
 
@@ -167,10 +167,14 @@ public class DijkstraPQ {
             // 1 -> 2 -> 3 -> 4
             int donkey = 1;
         }
-        System.out.println("User Location -> " + output);
-        System.out.println("Facts about the biz:");
-        System.out.println("Ratings in stars" + chosenBiz.getStars());
 
-        System.out.println(chosenBiz.getCategories().toString());             
-    }     
+        // output results
+        System.out.println("The nearest restaurant to you is: " + chosenBiz.getName());
+        System.out.println("Location: " + chosenBiz.getLatitude() + ", " + chosenBiz.getLongitude());
+        System.out.println("Categories: " + chosenBiz.getCategories());
+        System.out.println("Stars: " +  chosenBiz.getStars());
+        System.out.printf("Total distance: %.2f km\n", smallestDistance);
+        System.out.println("Directions: User -> " + output);
+        System.out.println();
+    }
 }
