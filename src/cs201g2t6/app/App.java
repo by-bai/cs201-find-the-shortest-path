@@ -27,7 +27,7 @@ public class App {
          * 1 - Dijkstra with Priority Queue
          * 2 - Bellman 
          * 3 - Dijkstra with Adjacency List*/ 
-        int algo = 0; 
+        int algo = 2; 
         
         try {
             List<Business> allBusinessList = FileReader.readFile("data/businesstest100.csv");
