@@ -13,7 +13,7 @@ Done by: Akshaya, Bai, Charlotte, Kylie, Viddya
 
 2. **Set user's location:** (App.java:12)
 ```java
-    Double[] userLocation = {45.5889059, -122.5933308}; 
+    Double[] userLocation = {40.0175444, -105.28335}; 
 ```
 
 3. **Choose the algorithm** (App.java:28)

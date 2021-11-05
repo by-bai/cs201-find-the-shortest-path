@@ -12,6 +12,10 @@ public class App {
 
         /** Enter x & y coordinates of your location */ 
         Double[] userLocation = {40.0175444, -105.28335}; 
+        // Possible Locations //
+        // 40.0175444, -105.28335 //
+        // 45.6925914, -122.6586444 //
+        // 45.5889059, -122.5933308 //
 
         /** Find restaurants within this distance */ 
         double maxDistance = 10.0; 
@@ -20,22 +24,20 @@ public class App {
         double minRating = 4.0; 
 
         /** Set distance for two businesses to be considered neighbours */
-        double neighbourDistance = 0.001;
+        double neighbourDistance = 0.4;
 
         /** Enter algorithm:
          * 0 - BruteForce 
-         * 1 - Dijkstra with Priority Queue
-         * 2 - Bellman 
+         * 1 - Dijkstra with Adjacency Matrix
+         * 2 - Bellman-Ford
          * 3 - Dijkstra with Adjacency List*/ 
-        int algo = 2; 
+        int algo = 1; 
         
         try {
-            List<Business> allBusinessList = FileReader.readFile("data/businesstest100.csv");
+            List<Business> allBusinessList = FileReader.readFile("data/business.csv");
             List<Business> nearbyBusinessList = FilterBusinesses.getBusinessesNearby(allBusinessList, userLocation, maxDistance, minRating); 
             List<Business> nearbyRestaurantsList = FilterBusinesses.getRestaurantsOnly(nearbyBusinessList); 
             List<Business> nearbyHighestRatedRestaurantsList = FilterBusinesses.getHighestRatedRestaurants(nearbyRestaurantsList, minRating); 
-
-            //System.out.println(nearbyHighestRatedRestaurantsList);
 
             // make user location a business
             Business user = new Business(null, "User", userLocation[0], userLocation[1], null, 0); 
