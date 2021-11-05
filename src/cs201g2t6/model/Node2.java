@@ -26,15 +26,15 @@ public class Node2 {
         return value;
     }
 
-    public int calculateWeight(int[][] adj) {
-        int result = 0;
+    public double calculateWeight(double[][] adj) {
+        double result = 0;
         if (adj!=null && path != null && path.size() > 1) {
-            int totalWeight = 0;
+            double totalWeight = 0;
             for (int i = 1; i < path.size(); i++) {
                 int v1 = path.get(i-1);
                 int v2 = path.get(i);
                 if(v1 >= 0 && v2 >= 0 && v1 < adj.length && v2 < adj.length) {
-                    int weight = adj[v1][v2];
+                    double weight = adj[v1][v2];
                     totalWeight = totalWeight + weight;
                 } else {
                     System.out.println("Parameter not valid");
@@ -47,7 +47,7 @@ public class Node2 {
         return result;
     }
 
-    public void print(int[][] adj, List<Business> nearbyBusinessList) {
+    public void print(double[][] adj, List<Business> nearbyBusinessList) {
         if (path != null && path.size() > 0) {
             System.out.print(nearbyBusinessList.get(path.get(path.size() - 1)).getName());
             for (int i = path.size() - 2; i >= 0; i-- ) {
@@ -59,7 +59,7 @@ public class Node2 {
         }
     }
 
-    public void printDestination(int[][] adj, List<Business> nearbyBusinessList) {
+    public void printDestination(double[][] adj, List<Business> nearbyBusinessList) {
         if (path != null && path.size() > 0) {
             System.out.println(nearbyBusinessList.get(path.get(0)).getName());
         } else {
@@ -67,7 +67,7 @@ public class Node2 {
         }
     }
 
-    public void printLocation(int[][] adj, List<Business> nearbyBusinessList) {
+    public void printLocation(double[][] adj, List<Business> nearbyBusinessList) {
         if (path != null && path.size() > 0) {
             System.out.print(nearbyBusinessList.get(path.get(0)).getLatitude() + ", ");
             System.out.println(nearbyBusinessList.get(path.get(0)).getLongitude());
@@ -76,7 +76,7 @@ public class Node2 {
         }
     }
 
-    public void printCategories(int[][] adj, List<Business> nearbyBusinessList) {
+    public void printCategories(double[][] adj, List<Business> nearbyBusinessList) {
         if (path != null && path.size() > 0) {
             System.out.println(nearbyBusinessList.get(path.get(0)).getCategories());
             
@@ -85,7 +85,7 @@ public class Node2 {
         }
     }
 
-    public void printStars(int[][] adj, List<Business> nearbyBusinessList) {
+    public void printStars(double[][] adj, List<Business> nearbyBusinessList) {
         if (path != null && path.size() > 0) {
             System.out.println(nearbyBusinessList.get(path.get(0)).getStars());
         } else {

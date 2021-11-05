@@ -4,12 +4,12 @@ package cs201g2t6.model;
 import java.util.*;
 
 public class BruteForce {
-    private Graph2 graph;
+    private Graph3 graph;
     private Business userLocation;
     private List<Business> nearbyBusinessList;
     private int size;
 
-    public BruteForce(Graph2 graph, Business userLocation) {
+    public BruteForce(Graph3 graph, Business userLocation) {
         this.graph = graph;
         this.userLocation = userLocation;
         nearbyBusinessList = graph.getBusinessList(); 
@@ -18,7 +18,7 @@ public class BruteForce {
 
     public void doBruteForce() {
 
-        int[][] matrix = graph.getAdjMatrix();
+        double[][] matrix = graph.getAdjMatrix();
 
         // for (int i = 0; i < matrix.length; i++) {
         //     for (int j = 0; j < matrix[i].length; j++) {
@@ -83,7 +83,7 @@ public class BruteForce {
         nearestVertex.printCategories(matrix, nearbyBusinessList);
         System.out.print("Stars: ");
         nearestVertex.printStars(matrix, nearbyBusinessList);
-        System.out.println("Total Weight: " + smallestCost);
+        System.out.printf("Total Distance: %.4f km %n " , smallestCost);
         // System.out.printf("Total distance: %.2f km\n", minCost);
         System.out.print("Directions: ");
         nearestVertex.print(matrix,nearbyBusinessList);

@@ -20,17 +20,17 @@ public class App {
         double minRating = 4.0; 
 
         /** Set distance for two businesses to be considered neighbours */
-        double neighbourDistance = 0.4;
+        double neighbourDistance = 0.001;
 
         /** Enter algorithm:
          * 0 - BruteForce 
          * 1 - Dijkstra with Priority Queue
          * 2 - Bellman 
          * 3 - Dijkstra with Adjacency List*/ 
-        int algo = 2; 
+        int algo = 0; 
         
         try {
-            List<Business> allBusinessList = FileReader.readFile("data/business.csv");
+            List<Business> allBusinessList = FileReader.readFile("data/businesstest100.csv");
             List<Business> nearbyBusinessList = FilterBusinesses.getBusinessesNearby(allBusinessList, userLocation, maxDistance, minRating); 
             List<Business> nearbyRestaurantsList = FilterBusinesses.getRestaurantsOnly(nearbyBusinessList); 
             List<Business> nearbyHighestRatedRestaurantsList = FilterBusinesses.getHighestRatedRestaurants(nearbyRestaurantsList, minRating); 
@@ -44,12 +44,13 @@ public class App {
             nearbyBusinessList.add(user); 
 
             Graph2 graph = new Graph2(nearbyBusinessList.size(), nearbyBusinessList, neighbourDistance);
+            Graph3 graph3 = new Graph3(nearbyBusinessList.size(), nearbyBusinessList, neighbourDistance);
 
             long startTime = System.currentTimeMillis();
 
             if (algo == 0) {
                 System.out.println("Chosen Algorithm: (0) Brute Force");
-                BruteForce bruteForce = new BruteForce(graph, user);
+                BruteForce bruteForce = new BruteForce(graph3, user);
                 bruteForce.doBruteForce();
             } else if (algo == 1) {
                 System.out.println("Chosen Algorithm: (1) Dijkstra Priority Queue");
