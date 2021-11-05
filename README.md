@@ -14,6 +14,12 @@ Done by: Akshaya, Bai, Charlotte, Kylie, Viddya
 2. **Set user's location:** (App.java:12)
 ```java
     Double[] userLocation = {40.0175444, -105.28335}; 
+
+    /*
+    Other possible locations:
+    {45.6925914, -122.6586444}
+    {45.5889059, -122.5933308}
+    */
 ```
 
 3. **Choose the algorithm** (App.java:28)
@@ -21,7 +27,7 @@ Done by: Akshaya, Bai, Charlotte, Kylie, Viddya
 ```java
     /** 
      0 - Brute Force Algorithm
-     1 - Dijkstra's Algorithm with Priority Queue
+     1 - Dijkstra's Algorithm with Adjacency Matrix
      2 - Bellman Ford Algorithm
      3 - Dijsktra's Algorithm with Adjacency List 
      */
