@@ -12,10 +12,6 @@ public class App {
 
         /** Enter x & y coordinates of your location */ 
         Double[] userLocation = {40.0175444, -105.28335}; 
-        // Possible Locations //
-        // 40.0175444, -105.28335 //
-        // 45.6925914, -122.6586444 //
-        // 45.5889059, -122.5933308 //
 
         /** Find restaurants within this distance */ 
         double maxDistance = 10.0; 
